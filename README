@@ -1,0 +1,24 @@
+= About
+
+DebugClient is a PHP client library to communicate with DebugServer
+
+= Usage
+
+$debug = DebugClient::instance();
+$debug->connect();
+
+$obj = array(
+  'id' => rand(0, 0xFFFF),
+  'name' => 'Sample name',
+  'time' => strftime('%m-%d-%Y', time())
+);
+
+// these functions are globally defined
+debug_clear();
+debug('This is a plain text message.');
+debug_info('This is an informational message.');
+debug_warning('This is a warning message.');
+debug_error('This is an error message.');
+debug_dump($obj);
+
+$debug->close();
